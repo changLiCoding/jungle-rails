@@ -4,9 +4,11 @@
     <h1>My Cart</h1>
   </header>
   <% if enhanced_cart.empty? %>
-    <h1>Sorry there is nothing in the cart</h1>
-    <p>Please go back to home page add more items!</p>
-    <button><a href='/'>Go Main</a></button>
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>An Empty CART!</strong> Sorry there is nothing in the cart. Please click the <a href='/'>LINK</a> to go back main page.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   <% else %>
     <div class="panel panel-default items">
       <table class="table table-bordered">
