@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "about", to: "about#index"
   root to: 'products#index'
 
+  resources :users
+
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
