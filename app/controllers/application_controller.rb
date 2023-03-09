@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
-  def get_line_items_by_order(order_id)
-    LineItem.where(order_id: order_id).map {|line_item| {
-      product: Product.find_by(id: line_item.product_id),
-      quantity: line_item.quantity} }
-  end
-  helper_method :get_line_items_by_order
+  # def get_line_items_by_order(order_id)
+  #   LineItem.where(order_id: order_id).map {|line_item| {
+  #     product: Product.find_by(id: line_item.product_id),
+  #     quantity: line_item.quantity} }
+  # end
+  # helper_method :get_line_items_by_order
 
   def update_cart(new_cart)
     cookies[:cart] = {

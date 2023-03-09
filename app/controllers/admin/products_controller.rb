@@ -1,6 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  http_basic_authenticate_with name: ENV["HTTP_BASIC_AUTHENTICATION_USERNAME"], password: ENV["HTTP_BASIC_AUTHENTICATION_PASSWORD"], except: :index
-
+  http_basic_authenticate_with name: ENV['ADMIN_USERNAME'], password: ENV['ADMIN_PASSWORD']
 
   def index
 

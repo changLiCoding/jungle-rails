@@ -21,8 +21,8 @@
         </tr>
       </thead>
       <tbody>
-        <% get_line_items_by_order(@order.id).each do |line_item| %>
-          <%= render 'item', product: line_item[:product], quantity: line_item[:quantity].to_i %>
+        <% @line_items.each do |line_item| %>
+          <%= render 'item', product: Product.find_by(id: line_item.product_id), quantity: line_item[:quantity].to_i %>
         <% end %>
       </tbody>
       <tfoot>
