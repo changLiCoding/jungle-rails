@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   def show
+    puts @order.inspect
   end
 
   def add_item
