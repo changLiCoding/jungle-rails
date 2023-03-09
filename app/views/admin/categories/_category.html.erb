@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <p>
+      <%= category.name %>
+    </p>
+  </td>
+  <td>
+    <%= category.id %>
+  </td>
+  <td>
+    <%= Product.where(category_id: category.id).count %>
+  </td>
+  <td>
+    <%= category.created_at %>
+  </td>
+  <%# <td>
+    <%= link_to fa_icon('trash'), [:admin, category], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td> %>
+</tr>
