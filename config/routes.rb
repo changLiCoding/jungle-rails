@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   get "sign_up", to: "authentications#new"
   post "sign_up", to: "authentications#create"
-  get "sign_in", to: "authentications#sign_in"
-  post "sign_in", to: "authentications#sign_in"
+
+  get "sign_in", to: "sessions#new"
+  post "sign_in", to: "sessions#create"
+
+  delete "logout", to: "sessions#destroy"
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]

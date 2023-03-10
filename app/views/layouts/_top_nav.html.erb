@@ -43,9 +43,25 @@
         </li> %>
       </ul>
       <ul class="navbar-nav">
-        <li>
-          <a class="nav-link" href='/sign_up'>Sign Up!</a>
-        </li>
+        <% if session[:user_id] %>
+          <li class="nav-item">
+            <% log_user = User.find_by(id: session[:user_id]) %>
+            <%= log_user.e_mail %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "LogOut", logout_path, method: :delete, class: 'btn btn-info'%>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign Up!", sign_up_path, class: 'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href='/sign_in'>Sign In!</a>
+          </li>
+        <% end %>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-danger"
