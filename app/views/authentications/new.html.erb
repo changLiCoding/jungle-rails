@@ -1,0 +1,44 @@
+<h1>Sign Up</h1>
+
+<%= form_with model: @user, url: sign_up_path do |form|%>
+
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <strong>The following errors prevented saving:</strong>
+      <ul>
+        <% form.object.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-4">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= form.label "Email" %>
+    <%= form.email_field :e_mail, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Sign Up~!', class: 'btn btn-primary mt-5' %>
+<% end %>
+
+

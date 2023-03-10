@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get "about", to: "about#index"
   root to: 'products#index'
 
-  resources :users
+  get "sign_up", to: "authentications#new"
+  post "sign_up", to: "authentications#create"
+  get "sign_in", to: "authentications#sign_in"
+  post "sign_in", to: "authentications#sign_in"
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
