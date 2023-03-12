@@ -1,44 +1,45 @@
-<h1>Sign Up</h1>
+<article class="form-signin w-100 m-auto">
+  <%= form_with model: @user, url: sign_up_path do |form|%>
 
-<%= form_with model: @user, url: sign_up_path do |form|%>
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <strong>The following errors prevented saving:</strong>
+        <ul>
+          <% form.object.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
 
-  <% if form.object.errors.any? %>
-    <div class="alert alert-danger">
-      <strong>The following errors prevented saving:</strong>
-      <ul>
-        <% form.object.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
+    <div class="form-floating mt-4">
+      <%= form.text_field :first_name, class: 'form-control', placeholder: "First name" %>
+      <%= form.label :first_name %>
     </div>
+
+    <div class="form-floating mt-2">
+      <%= form.text_field :last_name, class: 'form-control', placeholder: "Last name" %>
+      <%= form.label :last_name %>
+    </div>
+
+    <div class="form-floating mt-2">
+      <%= form.email_field :e_mail, class: 'form-control', placeholder: "name@example.com" %>
+      <%= form.label :email_address %>
+    </div>
+
+    <div class="form-floating mt-2">
+      <%= form.password_field :password, class: 'form-control', placeholder: "password" %>
+      <%= form.label :password %>
+    </div>
+
+    <div class="form-floating mt-2">
+      <%= form.password_field :password_confirmation, class: 'form-control', placeholder: "Password confirmation"%>
+      <%= form.label :password_confirmation %>
+    </div>
+
+    <%= form.submit 'Sign Up~!', class: 'btn btn-primary mt-5' %>
   <% end %>
-
-  <div class="form-group mt-4">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group mt-2">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group mt-2">
-    <%= form.label "Email" %>
-    <%= form.email_field :e_mail, class: 'form-control' %>
-  </div>
-
-  <div class="form-group mt-2">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: 'form-control' %>
-  </div>
-
-  <div class="form-group mt-2">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: 'form-control' %>
-  </div>
-
-  <%= form.submit 'Sign Up~!', class: 'btn btn-primary mt-5' %>
-<% end %>
+</article>
 
 
