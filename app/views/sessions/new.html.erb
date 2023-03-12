@@ -1,12 +1,12 @@
 <% if flash[:alert] %>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="alert w-75 alert-warning mx-auto alert-dismissible fade show" role="alert">
     <p ><%= flash[:alert] %></p>
 
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
 <% end %>
-<article class="form-signin w-100 m-auto">
+<article class="form-signin w-50 mt-5 m-auto text-center">
   <%= form_with url: sign_in_path do |form|%>
   <h1 class="h3 mb-3 fw-normal">Sign In</h1>
 

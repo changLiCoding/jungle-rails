@@ -14,10 +14,17 @@
   <%= render 'layouts/top_nav' %>
 
   <% if active_sale? %>
-    <p class="alert alert-info mt-4">
+    <div class="w-75 mx-auto mt-4 alert alert-warning alert-dismissible fade show" role="alert">
+    <p>
       <% sale = get_sale_data  %>
       There's any active <%= sale[0].name %> sale going on! <strong>Everything is <%= sale[0].percent_off %>% off!</strong>
     </p>
+
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+
 
   <% end %>
 
