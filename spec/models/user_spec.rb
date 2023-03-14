@@ -89,4 +89,38 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe '.authenticate_with_credentials' do
+    # examples for this class method here
+    it "should authenticate with right email and password" do
+      user = User.new(e_mail: "test@example.com", first_name: "first name", last_name: "last name", password: "password", password_confirmation: "password")
+      user.save
+      user_test = User.authenticate_with_credentials("test@example.com", "password")
+      expect(user_test.e_mail).to eql("test@example.com")
+    end
+
+    it "should not authenticate with wrong password" do
+      user = User.new(e_mail: "test@example.com", first_name: "first name", last_name: "last name", password: "password", password_confirmation: "password")
+      user.save
+      user_test = User.authenticate_with_credentials("test@example.com", "password1234")
+      expect(user_test).to be_nil
+    end
+
+    it "should not authenticate with email that not exist" do
+
+      user_test = User.authenticate_with_credentials("test@example.com", "password")
+      expect(user_test).to be_nil
+    end
+
+    it "should authenticate with right email and password even though the email contain space" do
+      user = User.new(e_mail: "test@example.com", first_name: "first name", last_name: "last name", password: "password", password_confirmation: "password")
+      user.save
+      user_test = User.authenticate_with_credentials("  test@example.com  ", "password")
+      p user_test
+      expect(user_test.e_mail).to eql("test@example.com")
+    end
+
+
+  end
+
 end

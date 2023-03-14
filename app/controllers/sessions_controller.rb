@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
 
   end
 
-
   def create
-    user = User.find_by(e_mail: params[:e_mail])
-    if user.present? && user.authenticate(params[:password])
+
+    if user = User.authenticate_with_credentials(params[:e_mail], params[:password])
       session[:user_id] = user.id
       redirect_to [:products], notice: 'User Signed In Successfully!'
+        # success logic, log them in
     else
+        # failure, render login form
       flash[:alert] = "Invalid Email or password."
       render :new
     end
