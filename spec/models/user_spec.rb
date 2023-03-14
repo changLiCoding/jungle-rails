@@ -116,7 +116,6 @@ RSpec.describe User, type: :model do
       user = User.new(e_mail: "test@example.com", first_name: "first name", last_name: "last name", password: "password", password_confirmation: "password")
       user.save
       user_test = User.authenticate_with_credentials("  test@example.com  ", "password")
-      p user_test
       expect(user_test.e_mail).to eql("test@example.com")
     end
 
