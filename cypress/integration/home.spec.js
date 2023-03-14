@@ -7,9 +7,6 @@ describe("roots or products page", () => {
 	it("There is products on the page", () => {
 		cy.get(".products article").should("be.visible");
 	});
-	it("There is 2 products on the page", () => {
-		cy.get(".products article").should("have.length", 2);
-	});
 
 	it("displays roots with abouts text", () => {
 		cy.get(".intro p").should("have.length", 3);
@@ -22,5 +19,9 @@ describe("roots or products page", () => {
 			.contains(
 				"We have a wide variety of plants and flowers available for purchase on our website"
 			);
+	});
+
+	it("There is 2 products on the page", () => {
+		cy.get(".products article").should("have.length", 2);
 	});
 });
