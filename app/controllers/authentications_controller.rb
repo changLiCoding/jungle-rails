@@ -8,6 +8,7 @@ class AuthenticationsController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      UserMailer.welcome_email(@user).deliver_now
       redirect_to [:products], notice: 'User Signed Up!'
     else
       render :new
